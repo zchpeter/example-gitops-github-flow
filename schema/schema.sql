@@ -1,12 +1,11 @@
 COMMENT ON SCHEMA "public" IS 'standard public schema';
 
 CREATE TABLE "public"."audit" (
-    "id" serial,
+    "id" serial PRIMARY KEY,
     "operation" text NOT NULL,
     "query" text,
     "user_name" text NOT NULL,
-    "changed_at" timestamp(6) with time zone DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT "audit_pkey" PRIMARY KEY (id)
+    "changed_at" timestamp(6) with time zone DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE INDEX "idx_audit_changed_at" ON ONLY "public"."audit" (changed_at);
